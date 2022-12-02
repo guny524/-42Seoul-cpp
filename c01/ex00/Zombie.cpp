@@ -27,18 +27,7 @@ Zombie& Zombie::operator=(const Zombie& zb)
 	return (*this);
 }
 
-std::string	Zombie::getName(void)
-{
-	return (_name);
-}
-
 void	Zombie::announce(void)
 {
 	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-std::ostream& operator<<(std::ostream& out, Zombie &zb)
-{
-	out << zb.getName();
-	return (out);
 }

@@ -9,8 +9,6 @@ int	main(void)
 
 	zb->announce();
 	delete zb;
-
 	randomChump("test2");
-
 	return (0);
 }
