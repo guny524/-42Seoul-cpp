@@ -37,7 +37,7 @@ int	main(int argc, char *argv[])
 	Zombie	*zbs = zombieHorde(N, "test");
 	for (int i=0; i<N; ++i)
 		zbs[i].announce();
-	delete [] zbs;
+	delete []zbs;
 
 	return (0);
 }
