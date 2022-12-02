@@ -1,5 +1,5 @@
 NAME		?=
-CC			=	c++
+CXX			=	c++
 
 # HD_DIR		=	include/
 # SRC_DIR		=	src/
@@ -15,22 +15,22 @@ OBJ			=	$(SRC:.cpp=.o)
 BOBJ		=	$(BSRC:.cpp=.o)
 
 CFLAGS		+=	-std=c++98 -Wall -Wextra -Werror # -g # -fsanitize=address
-CPPFLAGS	+=	# -I $(HD_DIR) -I $(MLX_DIR)
+CXXFLAGS	+=	# -I $(HD_DIR) -I $(MLX_DIR)
 LIBADD		+=	# -lm -lmlx -framework OpenGL -framework Appkit -lpthread
 LDFLAGS		+=	# -L$(MLX_DIR)
 
 all:		$(NAME)
 
 %.o:		%.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+	$(CXX) $(CFLAGS) $(CXXFLAGS) -c $<
 
 $(NAME):	$(OBJ)
 # @make -C $(MLX_DIR) 2> /dev/null
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LIBADD) $^ -o $@
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $(LIBADD) $^ -o $@
 
 bonus:		$(BOBJ)
 # @make -C $(MLX_DIR) 2> /dev/null
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(LIBADD) $^ -o $(NAME)
+	$(CXX) $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $(LIBADD) $^ -o $(NAME)
 	touch bonus
 
 clean:
