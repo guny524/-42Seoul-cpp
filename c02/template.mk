@@ -21,7 +21,7 @@ LDFLAGS		+=	# -L$(MLX_DIR)
 
 all:		$(NAME)
 
-%.o:		%.c
+%.o:		%.cpp
 	$(CXX) $(CFLAGS) $(CXXFLAGS) -c $<
 
 $(NAME):	$(OBJ)
