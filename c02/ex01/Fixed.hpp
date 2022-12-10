@@ -26,7 +26,6 @@ public:
 	float	toFloat(void) const;
 	int		toInt(void) const;
 
-	float		extractFloat(void) const;
 	std::string	exact(void) const;
 };
 

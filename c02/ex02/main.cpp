@@ -18,7 +18,8 @@ int main( void )
 
 	std::cout << Fixed::max( a, b ) << std::endl;
 
-	std::cout << std::endl << std::endl;
+	///////////////////////////////
+	std::cout << std::endl << std::endl << std::endl;
 
 	Fixed	c(1.2f);
 	Fixed	d(3.4f);
@@ -42,6 +43,9 @@ int main( void )
 
 	std::cout << std::endl << std::endl;
 
+	///////////////////////////////
+	std::cout << std::endl << std::endl << std::endl;
+
 	Fixed	e(-1.2f);
 	Fixed	f(-3.4f);
 
@@ -61,6 +65,12 @@ int main( void )
 
 	std::cout << e / f << std::endl;
 	std::cout << (e / f).getRawBits() << std::endl;
+
+	///////////////////////////////
+	std::cout << std::endl << std::endl << std::endl;
+
+	std::cout << e / 0 << std::endl;
+	std::cout << (e / 0).getRawBits() << std::endl;
 
 	return 0;
 }

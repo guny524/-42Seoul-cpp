@@ -21,6 +21,13 @@ public:
 	Fixed&	operator=(const float& num);
 	Fixed&	operator=(const int& num);
 
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
+	float	toFloat(void) const;
+	int		toInt(void) const;
+
+	std::string	exact(void) const;
+
 	static Fixed&	min(Fixed& fixed1, Fixed& fixed2);
 	static Fixed&	min(const Fixed& fixed1, const Fixed& fixed2);
 	static Fixed&	max(Fixed& fixed1, Fixed& fixed2);
@@ -70,46 +77,38 @@ public:
 	Fixed	operator++(int);
 	Fixed&	operator--(void);
 	Fixed	operator--(int);
-
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
-	float	toFloat(void) const;
-	int		toInt(void) const;
-
-	float		extractFloat(void) const;
-	std::string	exact(void) const;
 };
 
-std::ostream& operator<<(std::ostream& out, const Fixed &fixed);
+std::ostream&	operator<<(std::ostream& out, const Fixed &fixed);
 
-Fixed& operator>( const float &f, const Fixed &fixed);
-Fixed& operator>( const int &f, const Fixed &fixed);
+bool	operator>(const float &num, const Fixed &fixed);
+bool	operator>(const int &num, const Fixed &fixed);
 
-Fixed& operator<( const float &f, const Fixed &fixed);
-Fixed& operator<( const int &f, const Fixed &fixed);
+bool	operator<(const float &num, const Fixed &fixed);
+bool	operator<(const int &num, const Fixed &fixed);
 
-Fixed& operator>=( const float &f, const Fixed &fixed);
-Fixed& operator>=( const int &f, const Fixed &fixed);
+bool	operator>=(const float &num, const Fixed &fixed);
+bool	operator>=(const int &num, const Fixed &fixed);
 
-Fixed& operator<=( const float &f, const Fixed &fixed);
-Fixed& operator<=( const int &f, const Fixed &fixed);
+bool	operator<=(const float &num, const Fixed &fixed);
+bool	operator<=(const int &num, const Fixed &fixed);
 
-Fixed& operator==( const float &f, const Fixed &fixed);
-Fixed& operator==( const int &f, const Fixed &fixed);
+bool	operator==(const float &num, const Fixed &fixed);
+bool	operator==(const int &num, const Fixed &fixed);
 
-Fixed& operator!=( const float &f, const Fixed &fixed);
-Fixed& operator!=( const int &f, const Fixed &fixed);
+bool	operator!=(const float &num, const Fixed &fixed);
+bool	operator!=(const int &num, const Fixed &fixed);
 
-Fixed& operator+( const float &f, const Fixed &fixed);
-Fixed& operator+( const int &f, const Fixed &fixed);
+Fixed	operator+(const float &num, const Fixed &fixed);
+Fixed	operator+(const int &num, const Fixed &fixed);
 
-Fixed& operator-( const float &f, const Fixed &fixed);
-Fixed& operator-( const int &f, const Fixed &fixed);
+Fixed	operator-(const float &num, const Fixed &fixed);
+Fixed	operator-(const int &num, const Fixed &fixed);
 
-Fixed& operator*( const float &f, const Fixed &fixed);
-Fixed& operator*( const int &f, const Fixed &fixed);
+Fixed	operator*(const float &num, const Fixed &fixed);
+Fixed	operator*(const int &num, const Fixed &fixed);
 
-Fixed& operator/( const float &f, const Fixed &fixed);
-Fixed& operator/( const int &f, const Fixed &fixed);
+Fixed	operator/(const float &num, const Fixed &fixed);
+Fixed	operator/(const int &num, const Fixed &fixed);
 
 #endif
