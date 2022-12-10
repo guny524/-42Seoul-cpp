@@ -5,14 +5,14 @@
 class Fixed
 {
 private:
-	int					_num;
-	static const int	fract_bit = 8;
+	int					_value;
+	static const int	_fract_bit = 8;
 public:
 	Fixed(void);
-	Fixed(const Fixed& f);
+	Fixed(const Fixed& fixed);
 	~Fixed();
 
-	Fixed&	operator=(const Fixed& f);
+	Fixed&	operator=(const Fixed& fixed);
 
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
