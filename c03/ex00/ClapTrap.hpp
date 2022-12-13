@@ -6,13 +6,13 @@
 
 class	ClapTrap
 {
-private:
+protected:
 	std::string		_name;
 	unsigned int	_hitPoint;
 	unsigned int	_energyPoint;
 	unsigned int	_attackDamage;
 
-	static const unsigned int	_initialHitPoint;
+	const unsigned int	_initialHitPoint;
 
 	bool			doesItCanDo(void);
 
@@ -23,8 +23,6 @@ public:
 	~ClapTrap();
 
 	ClapTrap&	operator=(const ClapTrap& ct);
-
-	unsigned int	getDamage();
 
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);

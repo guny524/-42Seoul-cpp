@@ -8,7 +8,8 @@ ClapTrap::ClapTrap(void):
 _name("empty"),
 _hitPoint(10),
 _energyPoint(10),
-_attackDamage(0)
+_attackDamage(0),
+_initialHitPoint(10)
 {
 	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
 }
@@ -17,7 +18,8 @@ ClapTrap::ClapTrap(const std::string& name):
 _name(name),
 _hitPoint(10),
 _energyPoint(10),
-_attackDamage(0)
+_attackDamage(0),
+_initialHitPoint(10)
 {
 	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
 }
@@ -26,7 +28,8 @@ ClapTrap::ClapTrap(const ClapTrap& ct):
 _name(ct._name),
 _hitPoint(ct._hitPoint),
 _energyPoint(ct._energyPoint),
-_attackDamage(ct._attackDamage)
+_attackDamage(ct._attackDamage),
+_initialHitPoint(ct._initialHitPoint)
 {
 	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
 }
@@ -45,11 +48,6 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& ct)
 	return (*this);
 }
 
-unsigned int	ClapTrap::getDamage()
-{
-	return (_attackDamage);
-}
-
 bool	ClapTrap::doesItCanDo(void)
 {
 	if (_hitPoint == 0 || _energyPoint == 0)
@@ -62,7 +60,7 @@ bool	ClapTrap::doesItCanDo(void)
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (doesItCanDo())
+	if (!doesItCanDo())
 		return ;
 	std::cout << "ClapTrap: " << _name << " attacks " << target << ", ";
 	std::cout << "causing " << _attackDamage << " points of damage!" << std::endl;
@@ -71,23 +69,25 @@ void	ClapTrap::attack(const std::string& target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (doesItCanDo())
-		return ;
-	std::cout << "ClapTrap: " << _name << " attacked!!" << std::endl;
-	// TODO
-	--_hitPoint;
+	unsigned int	hitPoint = _hitPoint - amount;
+	if (hitPoint > _hitPoint)
+		hitPoint = 0;
+	std::cout << "ClapTrap: " << _name << " take damge of " << amount;
+	_hitPoint = hitPoint;
+	std::cout << " and remain hit point " << _hitPoint << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (doesItCanDo())
+	if (!doesItCanDo())
 		return ;
 
-	unsigned int	hitPoint = amount + _hitPoint;
-	if (hitPoint > _initialHitPoint)
-		hitPoint = _initialHitPoint;
+	unsigned int	hitPoint = _hitPoint + amount;
+	if (hitPoint > ClapTrap::_initialHitPoint)
+		hitPoint = ClapTrap::_initialHitPoint;
 
-	std::cout << "ClapTrap: " << _name << " be repaired with amount " << _initialHitPoint - _hitPoint << std::endl;
+	std::cout << "ClapTrap: " << _name << " be repaired with amount " << amount;
 	_hitPoint = hitPoint;
+	std::cout << " and remain hit point " << _hitPoint << std::endl;
 	--_energyPoint;
 }
