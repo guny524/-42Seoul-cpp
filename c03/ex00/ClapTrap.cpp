@@ -8,7 +8,7 @@ ClapTrap::ClapTrap(void):
 _name("empty"),
 _hitPoint(10),
 _energyPoint(10),
-_attackDamage(10),
+_attackDamage(0)
 {
 	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
 }
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(const std::string& name):
 _name(name),
 _hitPoint(10),
 _energyPoint(10),
-_attackDamage(10),
+_attackDamage(0)
 {
 	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
 }
@@ -26,7 +26,7 @@ ClapTrap::ClapTrap(const ClapTrap& ct):
 _name(ct._name),
 _hitPoint(ct._hitPoint),
 _energyPoint(ct._energyPoint),
-_attackDamage(ct._attackDamage),
+_attackDamage(ct._attackDamage)
 {
 	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
 }
@@ -45,9 +45,14 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& ct)
 	return (*this);
 }
 
+unsigned int	ClapTrap::getDamage()
+{
+	return (_attackDamage);
+}
+
 bool	ClapTrap::doesItCanDo(void)
 {
-	if (_hitPoint == 0 || __energyPoint == 0)
+	if (_hitPoint == 0 || _energyPoint == 0)
 	{
 		std::cout << "ClapTrap: " << _name << " can't do anything" << std::endl;
 		return (false);
@@ -61,22 +66,28 @@ void	ClapTrap::attack(const std::string& target)
 		return ;
 	std::cout << "ClapTrap: " << _name << " attacks " << target << ", ";
 	std::cout << "causing " << _attackDamage << " points of damage!" << std::endl;
-	--_eneryPoint;
+	--_energyPoint;
 }
 
-void	ClapTrap::takeDamage(unsined int amount)
+void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (doesItCanDo())
 		return ;
 	std::cout << "ClapTrap: " << _name << " attacked!!" << std::endl;
+	// TODO
 	--_hitPoint;
 }
 
-void	ClapTrap::beRepaired(unsined int amount)
+void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (doesItCanDo())
 		return ;
-	std::cout << "ClapTrap: " << _name << " be repaired with hit point " << _initialHitPoint << std::endl;
-	_hitPoint = _initialHitPoint;
-	--_eneryPoint;
+
+	unsigned int	hitPoint = amount + _hitPoint;
+	if (hitPoint > _initialHitPoint)
+		hitPoint = _initialHitPoint;
+
+	std::cout << "ClapTrap: " << _name << " be repaired with amount " << _initialHitPoint - _hitPoint << std::endl;
+	_hitPoint = hitPoint;
+	--_energyPoint;
 }

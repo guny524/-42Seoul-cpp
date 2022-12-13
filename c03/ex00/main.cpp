@@ -1,14 +1,18 @@
 #include <iostream>
+#include <string>
 
 #include "ClapTrap.hpp"
 
 
 int	main(void)
 {
-	ClapTrap	a("frist"), b("second");
+	ClapTrap	a("a"), b("b");
 
-	a.attack("second");
-	b.takeDamage() //# TODO
-	a.attack("second");
+	a.attack("b");
+	b.takeDamage(5);
+	b.attack("a");
+	a.takeDamage(5);
+	b.beRepaired(10);
+	a.attack("b");
 	return (0);
 }

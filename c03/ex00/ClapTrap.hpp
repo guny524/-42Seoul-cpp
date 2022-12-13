@@ -9,11 +9,14 @@ class	ClapTrap
 private:
 	std::string		_name;
 	unsigned int	_hitPoint;
-	unsigned int	_eneryPoint;
+	unsigned int	_energyPoint;
 	unsigned int	_attackDamage;
 
 	static const unsigned int	_initialHitPoint;
 
+	bool			doesItCanDo(void);
+
+public:
 	ClapTrap(void);
 	ClapTrap(const std::string& name);
 	ClapTrap(const ClapTrap& ct);
@@ -21,13 +24,11 @@ private:
 
 	ClapTrap&	operator=(const ClapTrap& ct);
 
-	unsigned int	getDamage() //# TODO
-	bool			doesItCanDo(void);
+	unsigned int	getDamage();
 
-public:
 	void	attack(const std::string& target);
-	void	takeDamage(unsined int amount);
-	void	beRepaired(unsined int amount);
+	void	takeDamage(unsigned int amount);
+	void	beRepaired(unsigned int amount);
 };
 
 #endif
