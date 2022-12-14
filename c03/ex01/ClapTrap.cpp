@@ -26,12 +26,12 @@ _initialHitPoint(_hitPoint)
 
 ClapTrap::ClapTrap(const ClapTrap& ct):
 _name(ct._name),
-_hitPoint(ct._hitPoint),
-_energyPoint(ct._energyPoint),
-_attackDamage(ct._attackDamage),
-_initialHitPoint(ct._initialHitPoint)
+_hitPoint(ct._hitPoint < 10 ? ct._hitPoint: 10),
+_energyPoint(ct._energyPoint < 10 ? ct._hitPoint: 10),
+_attackDamage(0),
+_initialHitPoint(_hitPoint)
 {
-	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
+	std::cout << "copy ClapTrap: " << _name << " created!!" << std::endl;
 }
 
 ClapTrap::~ClapTrap()

@@ -1,17 +1,19 @@
 #include <iostream>
 #include <string>
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 
 int	main(void)
 {
-	FragTrap	a("a"), b("b");
+	DiamondTrap	a("a"), b("b");
 
-	for (int i=0; i<105; ++i)
+	a.whoAmI();
+
+	for (int i=0; i<55; ++i)
 		a.attack("b");
 
+	b.guardGate();
 	b.highFivesGuys();
 
 	b.takeDamage(50);
@@ -25,13 +27,29 @@ int	main(void)
 	std::cout << std::endl;
 
 
-	ScavTrap	*c = new ScavTrap("c");
+	ClapTrap	*aa = new DiamondTrap("aa");
+
+	aa->attack("b");
+	aa->takeDamage(5);
+	aa->beRepaired(10);
+
+	// c->guardGate();
+	// c->highFivesGuys();
+
+	delete aa;
+
+
+	std::cout << std::endl;
+
+
+	ClapTrap	*c = new DiamondTrap("c");
 
 	c->attack("b");
 	c->takeDamage(5);
 	c->beRepaired(10);
 
-	c->guardGate();
+	// c->guardGate();
+	// c->highFivesGuys();
 
 	delete c;
 
@@ -39,13 +57,14 @@ int	main(void)
 	std::cout << std::endl;
 
 
-	ClapTrap	*d = new ScavTrap("d");
+	ScavTrap	*d = new DiamondTrap("d");
 
 	d->attack("c");
 	d->takeDamage(5);
 	d->beRepaired(10);
 
-	// d->guardGate();
+	d->guardGate();
+	// d->highFivesGuys();
 
 	delete d;
 
@@ -53,29 +72,16 @@ int	main(void)
 	std::cout << std::endl;
 
 
-	FragTrap	*e = new FragTrap("e");
+	FragTrap	*e = new DiamondTrap("e");
 
 	e->attack("d");
 	e->takeDamage(5);
 	e->beRepaired(10);
 
+	// e->guardGate();
 	e->highFivesGuys();
 
 	delete e;
-
-
-	std::cout << std::endl;
-
-
-	ClapTrap	*f = new FragTrap("f");
-
-	f->attack("e");
-	f->takeDamage(5);
-	f->beRepaired(10);
-
-	// f->highFivesGuys();
-
-	delete f;
 
 	std::cout << std::endl;
 

@@ -18,11 +18,17 @@ int	main(void)
 	b.takeDamage(100);
 	b.attack("a");
 
+
+	std::cout << std::endl;
+
+
 	ClapTrap	*c = new ClapTrap("c");
 
 	c->attack("b");
 	c->takeDamage(5);
-	b.beRepaired(10);
+	c->beRepaired(10);
+
+	std::cout << std::endl;
 
 	return (0);
 }

@@ -20,5 +20,46 @@ int	main(void)
 	b.takeDamage(100);
 	b.attack("a");
 
+
+	std::cout << std::endl;
+
+
+	ClapTrap	c = ScavTrap("c");
+
+	c.attack("b");
+	c.takeDamage(5);
+	c.beRepaired(10);
+
+	// c.guardGate();
+
+	std::cout << std::endl;
+
+
+	ScavTrap	*d = new ScavTrap("d");
+
+	d->attack("c");
+	d->takeDamage(5);
+	d->beRepaired(10);
+
+	d->guardGate();
+
+	delete d;
+
+
+	std::cout << std::endl;
+
+
+	ClapTrap	*e = new ScavTrap("e");
+
+	e->attack("d");
+	e->takeDamage(5);
+	e->beRepaired(10);
+
+	// e->guardGate();
+
+	delete e;
+
+	std::cout << std::endl;
+
 	return (0);
 }

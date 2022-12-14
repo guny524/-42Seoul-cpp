@@ -1,4 +1,4 @@
-NAME		=	scavtrap
-SRC_ORI		=	main.cpp ScavTrap.cpp ClapTrap.cpp
+NAME		=	fragtrap
+SRC_ORI		=	main.cpp FragTrap.cpp ScavTrap.cpp ClapTrap.cpp
 
 include ../template.mk
