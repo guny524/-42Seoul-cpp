@@ -8,23 +8,8 @@ int	main(void)
 {
 	ClapTrap	a("a"), b("b");
 
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
-
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
-
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
-	a.attack("b");
+	for (int i=0; i<15; ++i)
+		a.attack("b");
 
 	b.takeDamage(5);
 	b.takeDamage(2);
@@ -32,6 +17,12 @@ int	main(void)
 
 	b.takeDamage(100);
 	b.attack("a");
+
+	ClapTrap	*c = new ClapTrap("c");
+
+	c->attack("b");
+	c->takeDamage(5);
+	b.beRepaired(10);
 
 	return (0);
 }

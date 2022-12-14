@@ -1,20 +1,20 @@
 #pragma once
-#ifndef __SCAVTRAP_H__
-# define __SCAVTRAP_H__
+#ifndef __FRAGTRAP_H__
+# define __FRAGTRAP_H__
 
 # include <string>
 
 # include "ClapTrap.hpp"
 
-class	ScavTrap: public ClapTrap
+class	FragTrap: public ClapTrap
 {
 public:
-	ScavTrap(void);
-	ScavTrap(const std::string& name);
-	ScavTrap(const ScavTrap& ct);
-	~ScavTrap();
+	FragTrap(void);
+	FragTrap(const std::string& name);
+	FragTrap(const FragTrap& ct);
+	~FragTrap();
 
-	ScavTrap&	operator=(const ScavTrap& ct);
+	FragTrap&	operator=(const FragTrap& ct);
 
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);

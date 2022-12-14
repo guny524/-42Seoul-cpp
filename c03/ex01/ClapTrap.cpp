@@ -9,7 +9,7 @@ _name("empty"),
 _hitPoint(10),
 _energyPoint(10),
 _attackDamage(0),
-_initialHitPoint(10)
+_initialHitPoint(_hitPoint)
 {
 	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
 }
@@ -19,7 +19,7 @@ _name(name),
 _hitPoint(10),
 _energyPoint(10),
 _attackDamage(0),
-_initialHitPoint(10)
+_initialHitPoint(_hitPoint)
 {
 	std::cout << "ClapTrap: " << _name << " created!!" << std::endl;
 }
@@ -52,7 +52,7 @@ bool	ClapTrap::doesItCanDo(void)
 {
 	if (_hitPoint == 0 || _energyPoint == 0)
 	{
-		std::cout << "ClapTrap: " << _name << " can't do anything" << std::endl;
+		std::cout << _name << " can't do anything" << std::endl;
 		return (false);
 	}
 	return (true);
