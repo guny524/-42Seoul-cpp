@@ -24,7 +24,7 @@ FragTrap::FragTrap(const std::string& name): ClapTrap(name)
 
 FragTrap::FragTrap(const FragTrap& ct): ClapTrap(ct)
 {
-	_hitPoint = 100;
+	_hitPoint = 100; // TODO
 	_energyPoint = 100;
 	_attackDamage = 30;
 	const_cast<unsigned int&>(_initialHitPoint) = _hitPoint;
