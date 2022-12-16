@@ -4,11 +4,15 @@
 
 # include <string>
 
+# include "Brain.hpp"
 # include "WrongAnimal.hpp"
 
 
 class WrongCat: public WrongAnimal
 {
+private:
+	Brain	*_brain;
+
 public:
 	WrongCat(void);
 	WrongCat(const WrongCat& c);
