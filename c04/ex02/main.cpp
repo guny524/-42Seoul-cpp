@@ -11,7 +11,7 @@
 
 int main()
 {
-	const Animal* a = new Animal();
+	// const Animal* a = new Animal();
 	const Animal* d = new Dog();
 	const Animal* c = new Cat();
 
@@ -19,9 +19,7 @@ int main()
 	std::cout << c->getType() << " " << std::endl;
 	d->makeSound();
 	c->makeSound();
-	a->makeSound();
 
-	delete a;
 	delete d;
 	delete c;
 
@@ -64,6 +62,8 @@ int main()
 
 	for (int i=0; i<num; ++i)
 		delete arr[i];
+
+	while (1);
 
 	return (0);
 }
