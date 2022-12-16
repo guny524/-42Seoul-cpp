@@ -17,6 +17,8 @@ Animal::~Animal()
 
 Animal&	Animal::operator=(const Animal& a)
 {
+	if (this == &a)
+		return (*this);
 	_type = a._type;
 	return (*this);
 }
@@ -28,5 +30,5 @@ std::string	Animal::getType(void) const
 
 void	Animal::makeSound(void) const
 {
-	std::cout << "Aniaml " << _type << "make sound" << std::endl;
+	std::cout << "Aniaml: " << _type << " make sound" << std::endl;
 }

@@ -4,31 +4,28 @@
 #include "Dog.hpp"
 
 
-Dog::Dog(void)
+Dog::Dog(void): Animal()
 {
 	Animal::_type = "Dog";
 }
 
-Dog::Dog(const Dog& a)
+Dog::Dog(const Dog& d): Animal()
 {
-	Animal::_type = a._type;
+	Animal::_type = d._type;
 }
 
 Dog::~Dog()
 {}
 
-Dog&	Dog::operator=(const Dog& a)
+Dog&	Dog::operator=(const Dog& d)
 {
-	_type = a._type;
+	if (this == &d)
+		return (*this);
+	_type = d._type;
 	return (*this);
-}
-
-std::string	Dog::getType(void) const
-{
-	return (_type);
 }
 
 void	Dog::makeSound(void) const
 {
-	std::cout << "Dog " << _type << "Bark!!" << std::endl;
+	std::cout << "Dog: " << _type << ", Bark!!" << std::endl;
 }
