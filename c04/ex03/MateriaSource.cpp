@@ -31,6 +31,8 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& ms)
 		delete _slot[i];
 		_slot[i] = ms._slot[i]->clone();
 	}
+
+	return (*this);
 }
 
 void		MateriaSource::learnMateria(AMateria* m)
@@ -49,7 +51,7 @@ AMateria*	MateriaSource::createMateria(const std::string& type)
 	return (_slot[idx]->clone());
 }
 
-const int&	MateriaSource::_findEmtpySlot(void) const
+int	MateriaSource::_findEmtpySlot(void) const
 {
 	for (int i=0; i<_size; ++i)
 		if (_slot[i] == NULL)
@@ -57,7 +59,7 @@ const int&	MateriaSource::_findEmtpySlot(void) const
 	return (-1);
 }
 
-const int&	MateriaSource::_find(const std::string name) const
+int	MateriaSource::_find(const std::string name) const
 {
 	for (int i=0; i<_size; ++i)
 		if (_slot[i] == NULL && _slot[i]->getType() == name)

@@ -23,6 +23,7 @@ AMateria::~AMateria()
 AMateria&	AMateria::operator=(const AMateria& am)
 {
 	std::cout << "AMateria " << am.getType() << " assign doesn't make sense" << std::endl;
+
 	return (*this);
 }
 

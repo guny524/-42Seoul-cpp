@@ -14,8 +14,8 @@ private:
 	const static int	_size = 4;
 	AMateria			*_slot[_size];
 
-	const int&	_findEmtpySlot(void) const;
-	const int&	_find(const std::string name) const;
+	int	_findEmtpySlot(void) const;
+	int	_find(const std::string name) const;
 
 public:
 	MateriaSource(void);

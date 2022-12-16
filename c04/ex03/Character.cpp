@@ -38,6 +38,8 @@ Character&	Character::operator=(const Character& c)
 		delete _slot[i];
 		_slot[i] = c._slot[i]->clone();
 	}
+
+	return (*this);
 }
 
 const std::string&	Character::getName() const
@@ -69,7 +71,7 @@ void	Character::use(int idx, ICharacter& target)
 	_slot[idx]->use(target);
 }
 
-const int&	Character::_findEmtpySlot(void) const
+int	Character::_findEmtpySlot(void) const
 {
 	for (int i=0; i<_size; ++i)
 		if (_slot[i] == NULL)

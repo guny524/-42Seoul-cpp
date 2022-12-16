@@ -15,7 +15,7 @@ private:
 	const static int	_size = 4;
 	AMateria*			_slot[_size];
 
-	const int&	_findEmtpySlot(void) const;
+	int	_findEmtpySlot(void) const;
 
 public:
 	Character(void);

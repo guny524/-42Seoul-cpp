@@ -13,9 +13,9 @@ Cure::Cure(const Cure& c): AMateria(c)
 Cure::~Cure()
 {}
 
-Cure&	operator=(const Cure& c)
+Cure&	Cure::operator=(const Cure& c)
 {
-	std::cout << "Cure assign doesn't make sense" << std::endl;
+	std::cout << "Cure " << c.getType() << " doesn't make sense" << std::endl;
 	return (*this);
 }
 

@@ -13,9 +13,10 @@ Ice::Ice(const Ice& ice): AMateria(ice)
 Ice::~Ice()
 {}
 
-Ice&	operator=(const Ice& ice)
+Ice&	Ice::operator=(const Ice& ice)
 {
-	std::cout << "Ice assign doesn't make sense" << std::endl;
+	std::cout << "Ice " << ice.getType() << " doesn't make sense" << std::endl;
+
 	return (*this);
 }
 
