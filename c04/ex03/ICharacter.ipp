@@ -2,6 +2,11 @@
 #ifndef __ICharacter_H__
 # define __ICharacter_H__
 
+# include <string>
+
+# include "AMateria.hpp"
+
+
 class	ICharacter
 {
 public:

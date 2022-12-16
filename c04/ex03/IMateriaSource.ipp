@@ -2,6 +2,11 @@
 #ifndef __IMATERIASOURCE_H__
 # define __IMATERIASOURCE_H__
 
+# include <string>
+
+# include "AMateria.hpp"
+
+
 class IMateriaSource
 {
 public:
