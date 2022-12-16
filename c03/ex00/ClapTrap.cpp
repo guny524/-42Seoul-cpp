@@ -26,8 +26,8 @@ _initialHitPoint(_hitPoint)
 
 ClapTrap::ClapTrap(const ClapTrap& ct):
 _name(ct._name),
-_hitPoint(ct._hitPoint < 10 ? ct._hitPoint: 10),
-_energyPoint(ct._energyPoint < 10 ? ct._hitPoint: 10),
+_hitPoint(ct._hitPoint),
+_energyPoint(ct._energyPoint),
 _attackDamage(0),
 _initialHitPoint(_hitPoint)
 {

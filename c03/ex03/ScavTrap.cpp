@@ -24,9 +24,9 @@ ScavTrap::ScavTrap(const std::string& name): ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap& ct): ClapTrap(ct)
 {
-	_hitPoint = 100;
-	_energyPoint = 50;
-	_attackDamage = 20;
+	_hitPoint = ct._hitPoint;
+	_energyPoint = ct._energyPoint;
+	_attackDamage = ct._attackDamage;
 	const_cast<unsigned int&>(_initialHitPoint) = _hitPoint;
 	std::cout << "ScavTrap: " << _name << " created!!" << std::endl;
 }
