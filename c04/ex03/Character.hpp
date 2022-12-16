@@ -4,7 +4,7 @@
 
 # include <string.h>
 
-# include "ICharacter.ipp"
+# include "ICharacter.hpp"
 # include "AMateria.hpp"
 
 

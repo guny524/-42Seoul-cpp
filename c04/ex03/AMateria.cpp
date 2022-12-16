@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "ICharacter.ipp"
+#include "ICharacter.hpp"
 #include "AMateria.hpp"
 
 

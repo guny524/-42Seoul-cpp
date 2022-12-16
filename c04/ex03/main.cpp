@@ -2,8 +2,8 @@
 #include "AMateria.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
-#include "ICharacter.ipp"
-#include "IMateriaSource.ipp"
+#include "ICharacter.hpp"
+#include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
 
 

@@ -4,7 +4,7 @@
 
 # include <string>
 
-# include "IMateriaSource.ipp"
+# include "IMateriaSource.hpp"
 # include "AMateria.hpp"
 
 
