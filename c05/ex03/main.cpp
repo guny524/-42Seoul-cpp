@@ -29,7 +29,7 @@ int	main(void)
 		new Bureaucrat("2", 5),
 	};
 	const AForm			*forms[3] = {
-		intern.makeForm("PresidentialPardonForm", "scf"),
+		intern.makeForm("ShrubberyCreationForm", "scf"),
 		intern.makeForm("RobotomyRequestForm", "rrf"),
 		intern.makeForm("PresidentialPardonForm", "ppf"),
 	};
