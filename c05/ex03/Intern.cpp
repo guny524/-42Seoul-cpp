@@ -23,6 +23,7 @@ Intern&	Intern::operator=(const Intern& i)
 	if (this == &i)
 		return (*this);
 	*this = i;
+	return (*this);
 }
 
 AForm	*Intern::makeForm(const std::string& name, const std::string& target)

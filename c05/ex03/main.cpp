@@ -18,7 +18,7 @@ int	main(void)
 	Intern	intern;
 	try
 	{
-		intern.makeForm("sdfsd", "target");
+		intern.makeForm("asdf", "target");
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}

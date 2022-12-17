@@ -1,10 +1,14 @@
 #pragma once
 #ifndef __INTERN_H__
-# define _INTERN_H__
+# define __INTERN_H__
 
 # include <string>
 
 # include "AForm.hpp"
+# include "PresidentialPardonForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "ShrubberyCreationForm.hpp"
+
 
 class	Intern
 {
