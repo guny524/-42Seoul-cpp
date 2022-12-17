@@ -17,19 +17,13 @@ protected:
 	class GradeTooHighException : public std::exception
 	{
 	public:
-		const char	*what(void) const throw()
-		{
-			return ("Grade is too high !!!");
-		}
+		const char	*what(void) const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		const char	*what(void) const throw()
-		{
-			return ("Grade is too low !!!");
-		}
+		const char	*what(void) const throw();
 	};
 
 public:
