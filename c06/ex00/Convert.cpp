@@ -73,7 +73,7 @@ bool	Convert::isInt(std::string raw)
 	// "123.456f"
 	// end = ".456f"
 	std::strtol(raw.c_str(), &end, 10);
-	if (end == '\0')
+	if (end == NULL)
 		return (true);
 	return (false);
 }
