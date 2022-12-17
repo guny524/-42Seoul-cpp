@@ -9,15 +9,19 @@ _name("default"),
 _grade(_checkGrade(75))
 {}
 
-Bureaucrat::Bureaucrat(const std::string& name, int grade):
+Bureaucrat::Bureaucrat(const std::string& name, const int& grade):
 _name(name),
-_grade(_checkGrade(grade))
-{}
+_grade(grade)
+{
+	_checkGrade(grade);
+}
 
 Bureaucrat::Bureaucrat(const Bureaucrat& b):
 _name(b._name),
-_grade(_checkGrade(b._grade))
-{}
+_grade(b._grade)
+{
+	_checkGrade(b._grade);
+}
 
 Bureaucrat::~Bureaucrat()
 {}
@@ -54,7 +58,7 @@ void	Bureaucrat::decrementGrade(void)
 	++_grade;
 }
 
-int	Bureaucrat::_checkGrade(int grade)
+const int&	Bureaucrat::_checkGrade(const int& grade) const
 {
 	if (grade < 1)
 		throw GradeTooHighException();

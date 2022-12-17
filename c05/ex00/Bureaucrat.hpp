@@ -12,7 +12,7 @@ protected:
 	const std::string	_name;
 	int					_grade;
 
-	int	_checkGrade(int grade);
+	const int&	_checkGrade(const int& grade) const;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -34,7 +34,7 @@ protected:
 
 public:
 	Bureaucrat(void);
-	Bureaucrat(const std::string& name, int grade);
+	Bureaucrat(const std::string& name, const int& grade);
 	Bureaucrat(const Bureaucrat& b);
 	~Bureaucrat();
 
