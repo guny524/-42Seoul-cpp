@@ -50,7 +50,8 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& b) const
 "                     |    |\n"
 "--------------------/ ,  . \\--------._\n";
 
-	std::ofstream   outfile(_target + "_shrubbery");
+	std::string str = _target + "_shrubbery";
+	std::ofstream   outfile(str.c_str());
 	if (outfile.is_open())
 	{
 		outfile << tree;
