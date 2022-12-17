@@ -114,7 +114,7 @@ void	Convert::convertRealType(std::string raw)
 			break;
 		case TYPE_INT:
 			l = strtol(raw.c_str(), NULL, 10);
-			if (!(std::numeric_limits<int>::min() < l && l < std::numeric_limits<int>::max()))
+			if (!(std::numeric_limits<int>::min() <= l && l <= std::numeric_limits<int>::max()))
 				_iOverFlowReal = true;
 			_i = static_cast<int>(l);
 			break;
@@ -158,7 +158,7 @@ void	Convert::convertOtherType()
 			else
 				_c = static_cast<char>(_f);
 			l = static_cast<long>(_f);
-			if (!(std::numeric_limits<int>::min() < l && l < std::numeric_limits<int>::max()))
+			if (!(std::numeric_limits<int>::min() <= l && l <= std::numeric_limits<int>::max()))
 				_iOverflow = true;
 			_i = static_cast<int>(_f);
 			_d = static_cast<double>(_f);
@@ -169,7 +169,7 @@ void	Convert::convertOtherType()
 			else
 				_c = static_cast<char>(_d);
 			l = static_cast<long>(_d);
-			if (!(std::numeric_limits<int>::min() < l && l < std::numeric_limits<int>::max()))
+			if (!(std::numeric_limits<int>::min() <= l && l <= std::numeric_limits<int>::max()))
 				_iOverflow = true;
 			_i = static_cast<int>(_d);
 			_f = static_cast<float>(_d);
