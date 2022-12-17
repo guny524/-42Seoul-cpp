@@ -1,3 +1,4 @@
+#pragma once
 #ifndef __SERIALIZE_H__
 # define __SERIALIZE_H__
 
