@@ -23,6 +23,7 @@ int	main(void)
 	try
 	{
 		Bureaucrat	b("b", 1);
+
 		std::cout << b << std::endl;
 		b.incrementGrade();
 	} catch (std::exception &e) {
@@ -32,6 +33,7 @@ int	main(void)
 	try
 	{
 		Bureaucrat	b("b", 150);
+
 		std::cout << b << std::endl;
 		b.decrementGrade();
 	} catch (std::exception &e) {
