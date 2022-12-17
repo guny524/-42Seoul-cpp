@@ -16,7 +16,6 @@ private:
 	const int			_gradeSign;
 	const int			_gradeExecute;
 
-protected:
 	const int&	_checkGrade(const int& grade) const;
 
 	class GradeTooHighException : public std::exception
@@ -41,7 +40,7 @@ public:
 	AForm(void);
 	AForm(const std::string& name, const int& gradesign, const int& gradeExecute);
 	AForm(const AForm& f);
-	~AForm();
+	virtual ~AForm();
 
 	AForm&	operator=(const AForm& f);
 
@@ -49,6 +48,8 @@ public:
 	const bool&			getIsSigned(void) const;
 	const int&			getGradeSign(void) const;
 	const int&			getGradeExecute(void) const;
+
+	void	checkExecute(Bureaucrat const & b) const;
 
 	void	beSigned(const Bureaucrat& b);
 

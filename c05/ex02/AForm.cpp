@@ -72,6 +72,12 @@ const int&	AForm::_checkGrade(const int& grade) const
 	return (grade);
 }
 
+void	AForm::checkExecute(Bureaucrat const & b) const
+{
+	if (!(getIsSigned() && b.getGrade() <= getGradeExecute()))
+		throw GradeTooLowException();
+}
+
 void	AForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() <= _gradeSign)
@@ -82,13 +88,12 @@ void	AForm::beSigned(const Bureaucrat& b)
 
 std::ostream&	operator<<(std::ostream& out, const AForm& f)
 {
-	out << f.getName() << ", ";
-	out << "form gradeSgin " << f.getGradeSign() << ", ";
-	out << "gradeExecute " << f.getGradeExecute() << ", ";
+	out << f.getName();
+	out << ", form gradeSign " << f.getGradeSign();
+	out << ", gradeExecute " << f.getGradeExecute();
 	if (f.getIsSigned())
-		out << "is signed";
+		out << ", is signed";
 	else
-		out << "is not signed";
-	out << std::endl;
+		out << ", is not signed";
 	return (out);
 }

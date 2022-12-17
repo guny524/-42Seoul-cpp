@@ -1,39 +1,76 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 
 int	main(void)
 {
+	srand(time(NULL));
+
+	const Bureaucrat	*bureaucrats[3] = {
+		new Bureaucrat("0", 140),
+		new Bureaucrat("1", 50),
+		new Bureaucrat("2", 5),
+	};
+	const AForm			*forms[3] = {
+		new ShrubberyCreationForm("scf"),
+		new RobotomyRequestForm("rrf"),
+		new PresidentialPardonForm("ppf"),
+	};
+
+	for (int i=0; i<3; ++i)
+	{
+		std::cout << *bureaucrats[i] << std::endl;
+		std::cout << *forms[i] << std::endl;
+	}
+	std::cout << std::endl << std::endl;
+
 	try
 	{
-		Form	f("f", 0, 75);
+		bureaucrats[0]->executeForm(*forms[0]);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl << std::endl;
 	}
 
+	bureaucrats[0]->signForm(*forms[0]);
+
 	try
 	{
-		Form	f("f", 151, 75);
+		bureaucrats[0]->executeForm(*forms[0]);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl << std::endl;
 	}
 
-	Form		f("f", 2, 75);
-	Bureaucrat	b("b", 3);
+	bureaucrats[1]->signForm(*forms[0]);
+	std::cout << *forms[0] << std::endl;
+	std::cout << std::endl << std::endl;
 
-	std::cout << f << std::endl;
-	std::cout << b << std::endl;
+	bureaucrats[1]->executeForm(*forms[0]);
+	std::cout << std::endl << std::endl;
 
-	b.signForm(f);
-	std::cout << f << std::endl;
+	for (int i=1; i<3; ++i)
+	{
+		bureaucrats[2]->signForm(*forms[i]);
+		std::cout << *forms[i] << std::endl;
+		bureaucrats[2]->executeForm(*forms[i]);
+		std::cout << std::endl << std::endl;
+	}
 
-	b.incrementGrade();
-	std::cout << b << std::endl;
-	b.signForm(f);
-	std::cout << f << std::endl;
+	for (int i=0; i<3; ++i)
+		std::cout << *forms[i] << std::endl;
+
+	for (int i=0; i<3; ++i)
+	{
+		delete bureaucrats[i];
+		delete forms[i];
+	}
 
 	return (0);
 }

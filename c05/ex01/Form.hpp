@@ -16,7 +16,6 @@ private:
 	const int			_gradeSign;
 	const int			_gradeExecute;
 
-protected:
 	const int&	_checkGrade(const int& grade) const;
 
 	class GradeTooHighException : public std::exception

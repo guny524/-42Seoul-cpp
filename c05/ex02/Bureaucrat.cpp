@@ -68,11 +68,11 @@ const int&	Bureaucrat::_checkGrade(const int& grade) const
 	return (grade);
 }
 
-void	Bureaucrat::signForm(AForm& f)
+void	Bureaucrat::signForm(const AForm& f) const
 {
 	try
 	{
-		f.beSigned(*this);
+		const_cast<AForm&>(f).beSigned(*this);
 		std::cout << _name << " signed " << f.getName() << std::endl;
 	} catch (std::exception& e) {
 		std::cout << _name << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
