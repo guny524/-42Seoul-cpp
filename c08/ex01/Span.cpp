@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <exception>
+#include <limits>
 
 #include "Span.hpp"
 
