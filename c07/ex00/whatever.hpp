@@ -23,18 +23,18 @@ T&	min(T& l, T& r)
 }
 
 template<typename T>
-T&	max(T& l, T& r)
+const T&	min(const T& l, const T& r)
 {
-	if (l > r)
+	if (l < r)
 		return (l);
 	else
 		return (r);
 }
 
 template<typename T>
-const T&	min(const T& l, const T& r)
+T&	max(T& l, T& r)
 {
-	if (l < r)
+	if (l > r)
 		return (l);
 	else
 		return (r);
@@ -51,7 +51,7 @@ const T&	max(const T& l, const T& r)
 
 #endif
 
-// TODO remove
+// // TODO remove
 // #include <iostream>
 // class Awesome
 // {
