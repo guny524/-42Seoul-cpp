@@ -188,7 +188,7 @@ float	BitcoinExchange::get_price_before_date(const std::string &date)
 std::string	BitcoinExchange::strip(const std::string &str)
 {
 	std::string::const_iterator			begin = str.begin();
-	std::string::const_reverse_iterator	end = str.rbegin();
+	std::string::const_reverse_iterator	end = str.rbegin(); // reverse iterator
 
 	while (std::isspace(*begin))
 		++begin;
