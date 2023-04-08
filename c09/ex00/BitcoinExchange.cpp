@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <exception>
+#include <stdexcept>
 #include <algorithm>
 
 
@@ -16,7 +16,7 @@ _input_file(input_file)
 {
 	std::ifstream data(_data_file.c_str());
 	if (!data.is_open())
-		throw StringException("could not open data file" + _data_file);
+		throw std::runtime_error("could not open data file" + _data_file);
 
 	// remove header
 	std::string header;
@@ -30,39 +30,39 @@ _input_file(input_file)
 		if (data.eof())
 			break;
 		if (data.fail())
-			throw StringException("fail to read line in data file " + _data_file);
+			throw std::runtime_error("fail to read line in data file " + _data_file);
 		std::istringstream linestream(line.c_str());
 
 		// format check date
 		std::string date;
 		std::getline(linestream, date, ',');
 		if (linestream.fail() || linestream.eof())
-			throw StringException("bad data => " + line);
+			throw std::runtime_error("bad data => " + line);
 		date = strip(date);
 
 		// format check price
 		std::string price_str;
 		std::getline(linestream, price_str);
 		if (linestream.fail() || !linestream.eof())
-			throw StringException("bad data => " + line);
+			throw std::runtime_error("bad data => " + line);
 		price_str = strip(price_str);
 
 		std::istringstream price_stream(price_str.c_str());
 		float price;
 		price_stream >> price;
 		if (price_stream.fail () || !price_stream.eof())
-			throw StringException("bad data =>" + line);
+			throw std::runtime_error("bad data =>" + line);
 
 		// check
 		check_date(date);
 		if (price < 0)
-			throw StringException("bad data =>" + line);
+			throw std::runtime_error("bad data =>" + line);
 
 		_data[date] = price;
 
 	}
 	if (!data.eof() && data.fail())
-		throw StringException("fail to read line data file " + _data_file);
+		throw std::runtime_error("fail to read line data file " + _data_file);
 
 	data.close();
 }
@@ -94,7 +94,7 @@ void	BitcoinExchange::check_date(const std::string& date)
 	// strptime(date.c_str(), "%Y-%m-%d", &t);
 
 	if (std::count(date.begin(), date.end(), '-') != 2)
-		throw StringException("bad date => " + date);
+		throw std::runtime_error("bad date => " + date);
 
 	std::istringstream stream(date);
 
@@ -102,40 +102,40 @@ void	BitcoinExchange::check_date(const std::string& date)
 	std::string year_str;
 	std::getline(stream, year_str, '-');
 	if (stream.fail() || stream.eof())
-		throw StringException("bad date year => " + date);
+		throw std::runtime_error("bad date year => " + date);
 
 	std::istringstream year_stream(year_str);
 	int year;
 	year_stream >> year;
 	if (year_stream.fail() || !year_stream.eof())
-		throw StringException("bad date year => " + date);
+		throw std::runtime_error("bad date year => " + date);
 
 	// month
 	std::string month_str;
 	std::getline(stream, month_str, '-');
 	if (stream.fail() || stream.eof())
-		throw StringException("bad date month => " + date);
+		throw std::runtime_error("bad date month => " + date);
 
 	std::istringstream month_stream(month_str);
 	int month;
 	month_stream >> month;
 	if (month_stream.fail() || !month_stream.eof())
-		throw StringException("bad date month => " + date);
+		throw std::runtime_error("bad date month => " + date);
 
 	if (!(1 <= month && month <= 12))
-		throw StringException("bad date month => " + date);
+		throw std::runtime_error("bad date month => " + date);
 
 	// day
 	std::string day_str;
 	std::getline(stream, day_str, '-');
 	if (stream.fail() || !stream.eof())
-		throw StringException("bad date day => " + date);
+		throw std::runtime_error("bad date day => " + date);
 
 	std::istringstream day_stream(day_str);
 	int day;
 	day_stream >> day;
 	if (day_stream.fail() || !day_stream.eof())
-		throw StringException("bad date day => " + date);
+		throw std::runtime_error("bad date day => " + date);
 
 	if (month == 2)
 	{
@@ -143,12 +143,12 @@ void	BitcoinExchange::check_date(const std::string& date)
 		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 		{
 			if (!(1 <= day && day <= 29))
-				throw StringException("bad date day => " + date);
+				throw std::runtime_error("bad date day => " + date);
 		}
 		else
 		{
 			if (!(1 <= day && day <= 28))
-				throw StringException("bad date day => " + date);
+				throw std::runtime_error("bad date day => " + date);
 		}
 	}
 	else
@@ -156,12 +156,12 @@ void	BitcoinExchange::check_date(const std::string& date)
 		if ((month <= 7 && !(month % 2)) || (month > 7 && month % 2))
 		{
 			if (!(1 <= day && day <= 30))
-				throw StringException("bad date day => " + date);
+				throw std::runtime_error("bad date day => " + date);
 		}
 		else
 		{
 			if (!(1 <= day && day <= 31))
-				throw StringException("bad date day => " + date);
+				throw std::runtime_error("bad date day => " + date);
 		}
 	}
 }
@@ -169,9 +169,9 @@ void	BitcoinExchange::check_date(const std::string& date)
 void	BitcoinExchange::check_value(const float& value)
 {
 	if (value <= 0.0f)
-		throw StringException("not a positive number.");
+		throw std::runtime_error("not a positive number.");
 	if (1000 <= value)
-		throw StringException("too large a number.");
+		throw std::runtime_error("too large a number.");
 }
 
 float	BitcoinExchange::get_price_before_date(const std::string &date)
@@ -181,7 +181,7 @@ float	BitcoinExchange::get_price_before_date(const std::string &date)
 	if (date != iter->first)
 		--iter;
 	if (iter == _data.begin())
-		throw StringException("could not find price before then date " + date);
+		throw std::runtime_error("could not find price before then date " + date);
 	return iter->second;
 }
 
@@ -202,7 +202,7 @@ void	BitcoinExchange::process()
 {
 	std::ifstream input(_input_file.c_str());
 	if (!input.is_open())
-		throw StringException("could not open input file " + _input_file);
+		throw std::runtime_error("could not open input file " + _input_file);
 
 	// remove header
 	std::string header;
@@ -217,28 +217,28 @@ void	BitcoinExchange::process()
 			if (input.eof())
 				break;
 			if (input.fail())
-				throw StringException("fail to read line in input file " + _input_file);
+				throw std::runtime_error("fail to read line in input file " + _input_file);
 			std::istringstream linestream(line.c_str());
 
 			// format check date
 			std::string date;
 			std::getline(linestream, date, '|');
 			if (linestream.fail() || linestream.eof())
-				throw StringException("bad input => " + line);
+				throw std::runtime_error("bad input => " + line);
 			date = strip(date);
 
 			// format check value
 			std::string value_str;
 			std::getline(linestream, value_str);
 			if (linestream.fail() || !linestream.eof())
-				throw StringException("bad input => " + line);
+				throw std::runtime_error("bad input => " + line);
 			value_str = strip(value_str);
 
 			std::istringstream value_stream(value_str.c_str());
 			float value;
 			value_stream >> value;
 			if (value_stream.fail() || !value_stream.eof())
-				throw StringException("bad input => " + line);
+				throw std::runtime_error("bad input => " + line);
 
 			// check
 			check_date(date);
@@ -253,34 +253,7 @@ void	BitcoinExchange::process()
 		}
 	}
 	if (!input.eof() && input.fail())
-		throw StringException("fail to read line input file " + _input_file);
+		throw std::runtime_error("fail to read line input file " + _input_file);
 
 	input.close();
-}
-
-BitcoinExchange::StringException::StringException(void)
-{}
-
-BitcoinExchange::StringException::StringException(const std::string& message):
-_message(message)
-{}
-
-BitcoinExchange::StringException::StringException(const StringException& se):
-_message(se._message)
-{}
-
-BitcoinExchange::StringException::~StringException() throw()
-{}
-
-BitcoinExchange::StringException&	BitcoinExchange::StringException::operator=(const StringException& se)
-{
-	if (this == &se)
-		return (*this);
-	this->_message = se._message;
-	return (*this);
-}
-
-const char*	BitcoinExchange::StringException::what(void) const throw()
-{
-	return _message.c_str();
 }
