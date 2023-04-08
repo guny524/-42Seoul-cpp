@@ -96,7 +96,7 @@ void	BitcoinExchange::check_date(const std::string& date)
 	if (std::count(date.begin(), date.end(), '-') != 2)
 		throw std::runtime_error("bad date => " + date);
 
-	std::istringstream stream(date);
+	std::istringstream stream(date.c_str());
 
 	// year
 	std::string year_str;
@@ -104,7 +104,7 @@ void	BitcoinExchange::check_date(const std::string& date)
 	if (stream.fail() || stream.eof())
 		throw std::runtime_error("bad date year => " + date);
 
-	std::istringstream year_stream(year_str);
+	std::istringstream year_stream(year_str.c_str());
 	int year;
 	year_stream >> year;
 	if (year_stream.fail() || !year_stream.eof())
@@ -116,7 +116,7 @@ void	BitcoinExchange::check_date(const std::string& date)
 	if (stream.fail() || stream.eof())
 		throw std::runtime_error("bad date month => " + date);
 
-	std::istringstream month_stream(month_str);
+	std::istringstream month_stream(month_str.c_str());
 	int month;
 	month_stream >> month;
 	if (month_stream.fail() || !month_stream.eof())
@@ -131,7 +131,7 @@ void	BitcoinExchange::check_date(const std::string& date)
 	if (stream.fail() || !stream.eof())
 		throw std::runtime_error("bad date day => " + date);
 
-	std::istringstream day_stream(day_str);
+	std::istringstream day_stream(day_str.c_str());
 	int day;
 	day_stream >> day;
 	if (day_stream.fail() || !day_stream.eof())
