@@ -12,13 +12,13 @@ class BitcoinExchange
 private:
 	std::string						_data_file;
 	std::string						_input_file;
-	std::map<std::string, double>	_data;
+	std::map<std::string, float>	_data;
 
 	BitcoinExchange(void);
 
 	void	check_date(const std::string& date);
-	void	check_value(const double& value);
-	double	get_price_before_date(const std::string& date);
+	void	check_value(const float& value);
+	float	get_price_before_date(const std::string& date);
 
 	std::string	strip(const std::string& str);
 
@@ -35,7 +35,7 @@ private:
 		StringException(const StringException& se);
 		~StringException() throw();
 
-		const char *what(void) const throw();
+		const char*	what(void) const throw();
 	};
 
 public:

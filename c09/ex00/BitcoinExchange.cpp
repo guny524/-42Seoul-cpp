@@ -48,7 +48,7 @@ _input_file(input_file)
 		price_str = strip(price_str);
 
 		std::istringstream price_stream(price_str.c_str());
-		double price;
+		float price;
 		price_stream >> price;
 		if (price_stream.fail () || !price_stream.eof())
 			throw StringException("bad data =>" + line);
@@ -88,7 +88,7 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& other)
 	return (*this);
 };
 
-void BitcoinExchange::check_date(const std::string& date)
+void	BitcoinExchange::check_date(const std::string& date)
 {
 	// struct tm t;
 	// strptime(date.c_str(), "%Y-%m-%d", &t);
@@ -166,7 +166,7 @@ void BitcoinExchange::check_date(const std::string& date)
 	}
 }
 
-void BitcoinExchange::check_value(const double& value)
+void	BitcoinExchange::check_value(const float& value)
 {
 	if (value <= 0.0f)
 		throw StringException("not a positive number.");
@@ -174,10 +174,12 @@ void BitcoinExchange::check_value(const double& value)
 		throw StringException("too large a number.");
 }
 
-double BitcoinExchange::get_price_before_date(const std::string &date)
+float	BitcoinExchange::get_price_before_date(const std::string &date)
 {
-	std::map<std::string, double>::const_iterator iter = _data.lower_bound(date);
+	std::map<std::string, float>::const_iterator iter = _data.lower_bound(date);
 
+	if (date != iter->first)
+		--iter;
 	if (iter == _data.begin())
 		throw StringException("could not find price before then date " + date);
 	return iter->second;
@@ -196,7 +198,7 @@ std::string	BitcoinExchange::strip(const std::string &str)
 	return std::string(begin, end.base());
 }
 
-void BitcoinExchange::process()
+void	BitcoinExchange::process()
 {
 	std::ifstream input(_input_file.c_str());
 	if (!input.is_open())
@@ -233,7 +235,7 @@ void BitcoinExchange::process()
 			value_str = strip(value_str);
 
 			std::istringstream value_stream(value_str.c_str());
-			double value;
+			float value;
 			value_stream >> value;
 			if (value_stream.fail() || !value_stream.eof())
 				throw StringException("bad input => " + line);
@@ -243,7 +245,7 @@ void BitcoinExchange::process()
 			check_value(value);
 
 			// print
-			double price = get_price_before_date(date);
+			float price = get_price_before_date(date);
 			std::cout << date << " => " << value << " = " << price * value << std::endl;
 
 		} catch(std::exception& e) {
@@ -278,7 +280,7 @@ BitcoinExchange::StringException&	BitcoinExchange::StringException::operator=(co
 	return (*this);
 }
 
-const char * BitcoinExchange::StringException::what(void) const throw()
+const char*	BitcoinExchange::StringException::what(void) const throw()
 {
 	return _message.c_str();
 }
