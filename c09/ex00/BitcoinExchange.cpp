@@ -93,7 +93,7 @@ void	BitcoinExchange::check_date(const std::string& date)
 	// struct tm t;
 	// strptime(date.c_str(), "%Y-%m-%d", &t);
 
-	if (std::count(date.begin(), date.end(), '-') != 2)
+	if (date.size() != 10 || std::count(date.begin(), date.end(), '-') != 2)
 		throw std::runtime_error("bad date => " + date);
 
 	std::istringstream stream(date.c_str());
@@ -170,7 +170,7 @@ void	BitcoinExchange::check_value(const float& value)
 {
 	if (value <= 0.0f)
 		throw std::runtime_error("not a positive number.");
-	if (1000 <= value)
+	if (1000.0f <= value)
 		throw std::runtime_error("too large a number.");
 }
 
