@@ -10,7 +10,7 @@ SRC_ORI		?=
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_ORI))
 OBJ			=	$(SRC:.cpp=.o)
 
-CFLAGS		+=	-std=c++98 -Wall -Wextra -Werror # -fsanitize=address
+CFLAGS		+=	-std=c++98 -Wall -Wextra -Werror # -g -fsanitize=address
 CXXFLAGS	+=	# -I $(HD_DIR) -I $(MLX_DIR)
 LIBADD		+=	# -lm -lmlx -framework OpenGL -framework Appkit -lpthread
 LDFLAGS		+=	# -L$(MLX_DIR)

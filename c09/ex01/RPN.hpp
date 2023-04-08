@@ -14,6 +14,7 @@ private:
 
 	RPN(void);
 
+	void	calculate(const char& c);
 
 public:
 	RPN(const std::string& expr);
